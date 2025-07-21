@@ -1,0 +1,478 @@
+{
+  "total_balance": 15116.74,
+  "buckets": {
+    "Car Repairs": 1266.6886451734379,
+    "Vacation": 1123.8579445283713,
+    "House Down Payment": 811.7285179055605,
+    "Emergency Savings": 4746.203942474128,
+    "UIUC": 5408.161783557119,
+    "Medical": 321.65286540058133,
+    "Golf": 770.1494801732695,
+    "PC Setup": 376.2958336263009,
+    "Gifts": 292.00098716123125
+  },
+  "transactions": [
+    {
+      "date": "2025-03-07 05:25:32",
+      "type": "deposit",
+      "amount": 5119.0,
+      "allocations": {
+        "Car Repairs": 511.90000000000003,
+        "Vacation": 511.90000000000003,
+        "House Down Payment": 767.85,
+        "Emergency Savings": 1279.75,
+        "UIUC": 767.85,
+        "Medical": 255.95000000000002,
+        "Golf": 255.95000000000002,
+        "PC Setup": 511.90000000000003,
+        "Gifts": 255.95000000000002
+      }
+    },
+    {
+      "date": "2025-03-07 05:26:16",
+      "type": "reallocation",
+      "amount": 511.9,
+      "from_bucket": "Car Repairs",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-07 05:26:42",
+      "type": "reallocation",
+      "amount": 255.95,
+      "from_bucket": "Golf",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-07 05:27:28",
+      "type": "reallocation",
+      "amount": 767.85,
+      "from_bucket": "House Down Payment",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-07 05:28:11",
+      "type": "reallocation",
+      "amount": 255.95,
+      "from_bucket": "Medical",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-07 05:29:15",
+      "type": "reallocation",
+      "amount": 255.95,
+      "from_bucket": "Gifts",
+      "to_bucket": "PC Setup"
+    },
+    {
+      "date": "2025-03-07 05:29:50",
+      "type": "reallocation",
+      "amount": 440.5,
+      "from_bucket": "PC Setup",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-08 19:49:50",
+      "type": "deposit",
+      "amount": 5000.0,
+      "allocations": {
+        "Car Repairs": 500.0,
+        "Vacation": 500.0,
+        "House Down Payment": 750.0,
+        "Emergency Savings": 1250.0,
+        "UIUC": 750.0,
+        "Medical": 250.0,
+        "Golf": 250.0,
+        "PC Setup": 500.0,
+        "Gifts": 250.0
+      }
+    },
+    {
+      "date": "2025-03-09 16:40:14",
+      "type": "reallocation",
+      "amount": 711.9,
+      "from_bucket": "Vacation",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-09 16:40:37",
+      "type": "reallocation",
+      "amount": 750.0,
+      "from_bucket": "House Down Payment",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-09 16:41:26",
+      "type": "reallocation",
+      "amount": 127.35,
+      "from_bucket": "PC Setup",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-09 16:42:12",
+      "type": "reallocation",
+      "amount": 250.0,
+      "from_bucket": "Gifts",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-09 16:42:46",
+      "type": "reallocation",
+      "amount": 250.0,
+      "from_bucket": "Golf",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-03-13 20:30:37",
+      "type": "reallocation",
+      "amount": 350.0,
+      "from_bucket": "PC Setup",
+      "to_bucket": "Emergency Savings"
+    },
+    {
+      "date": "2025-03-14 06:48:44",
+      "type": "deposit",
+      "amount": 750.0,
+      "allocations": {
+        "Car Repairs": 75.0,
+        "Vacation": 75.0,
+        "House Down Payment": 112.5,
+        "Emergency Savings": 187.5,
+        "UIUC": 112.5,
+        "Medical": 37.5,
+        "Golf": 37.5,
+        "PC Setup": 75.0,
+        "Gifts": 37.5
+      }
+    },
+    {
+      "date": "2025-03-14 06:50:13",
+      "type": "deposit",
+      "amount": 73.0,
+      "allocations": {
+        "Car Repairs": 7.300000000000001,
+        "Vacation": 7.300000000000001,
+        "House Down Payment": 10.95,
+        "Emergency Savings": 18.25,
+        "UIUC": 10.95,
+        "Medical": 3.6500000000000004,
+        "Golf": 3.6500000000000004,
+        "PC Setup": 7.300000000000001,
+        "Gifts": 3.6500000000000004
+      }
+    },
+    {
+      "date": "2025-03-26 06:18:29",
+      "type": "bucket_withdrawal",
+      "amount": 119.0,
+      "bucket": "Medical"
+    },
+    {
+      "date": "2025-03-31 09:00:37",
+      "type": "deposit",
+      "amount": 1495.0,
+      "allocations": {
+        "Car Repairs": 149.5,
+        "Vacation": 149.5,
+        "House Down Payment": 224.25,
+        "Emergency Savings": 373.75,
+        "UIUC": 224.25,
+        "Medical": 74.75,
+        "Golf": 74.75,
+        "PC Setup": 149.5,
+        "Gifts": 74.75
+      }
+    },
+    {
+      "date": "2025-04-01 14:55:09",
+      "type": "deposit",
+      "amount": 33.5,
+      "allocations": {
+        "Car Repairs": 1.675,
+        "Vacation": 3.35,
+        "House Down Payment": 6.7,
+        "Emergency Savings": 8.375,
+        "UIUC": 5.0249999999999995,
+        "Medical": 1.675,
+        "Golf": 1.675,
+        "PC Setup": 3.35,
+        "Gifts": 1.675
+      }
+    },
+    {
+      "date": "2025-04-23 10:43:48",
+      "type": "deposit",
+      "amount": 1692.0,
+      "allocations": {
+        "Car Repairs": 84.60000000000001,
+        "Vacation": 169.20000000000002,
+        "House Down Payment": 338.40000000000003,
+        "Emergency Savings": 423.0,
+        "UIUC": 253.79999999999998,
+        "Medical": 84.60000000000001,
+        "Golf": 84.60000000000001,
+        "PC Setup": 169.20000000000002,
+        "Gifts": 84.60000000000001
+      }
+    },
+    {
+      "date": "2025-04-30 12:26:02",
+      "type": "deposit",
+      "amount": 2000.0,
+      "allocations": {
+        "Car Repairs": 100.0,
+        "Vacation": 200.0,
+        "House Down Payment": 400.0,
+        "Emergency Savings": 500.0,
+        "UIUC": 300.0,
+        "Medical": 100.0,
+        "Golf": 100.0,
+        "PC Setup": 200.0,
+        "Gifts": 100.0
+      }
+    },
+    {
+      "date": "2025-05-01 20:37:07",
+      "type": "reallocation",
+      "amount": 200.0,
+      "from_bucket": "Gifts",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-05-03 16:50:44",
+      "type": "reallocation",
+      "amount": 150.0,
+      "from_bucket": "Medical",
+      "to_bucket": "House Down Payment"
+    },
+    {
+      "date": "2025-05-03 16:51:22",
+      "type": "reallocation",
+      "amount": 150.0,
+      "from_bucket": "Medical",
+      "to_bucket": "Golf"
+    },
+    {
+      "date": "2025-05-16 07:07:24",
+      "type": "bucket_withdrawal",
+      "amount": 1100.0,
+      "bucket": "House Down Payment"
+    },
+    {
+      "date": "2025-05-16 07:08:02",
+      "type": "deposit",
+      "amount": 19.99,
+      "allocations": {
+        "Car Repairs": 0.9994999999999999,
+        "Vacation": 1.9989999999999999,
+        "House Down Payment": 1.9989999999999999,
+        "Emergency Savings": 3.9979999999999998,
+        "UIUC": 5.996999999999999,
+        "Medical": 0.49974999999999997,
+        "Golf": 1.9989999999999999,
+        "PC Setup": 1.9989999999999999,
+        "Gifts": 0.49974999999999997
+      }
+    },
+    {
+      "date": "2025-05-19 08:06:33",
+      "type": "deposit",
+      "amount": 700.0,
+      "allocations": {
+        "Car Repairs": 35.0,
+        "Vacation": 70.0,
+        "House Down Payment": 70.0,
+        "Emergency Savings": 140.0,
+        "UIUC": 210.0,
+        "Medical": 17.5,
+        "Golf": 70.0,
+        "PC Setup": 70.0,
+        "Gifts": 17.5
+      }
+    },
+    {
+      "date": "2025-06-02 10:08:27",
+      "type": "deposit",
+      "amount": 51.96,
+      "allocations": {
+        "Car Repairs": 2.5980000000000003,
+        "Vacation": 5.196000000000001,
+        "House Down Payment": 5.196000000000001,
+        "Emergency Savings": 10.392000000000001,
+        "UIUC": 15.588,
+        "Medical": 1.2990000000000002,
+        "Golf": 5.196000000000001,
+        "PC Setup": 5.196000000000001,
+        "Gifts": 1.2990000000000002
+      }
+    },
+    {
+      "date": "2025-06-02 10:13:54",
+      "type": "bucket_withdrawal",
+      "amount": 6032.0,
+      "bucket": "UIUC"
+    },
+    {
+      "date": "2025-06-02 10:14:56",
+      "type": "bucket_withdrawal",
+      "amount": 1031.55,
+      "bucket": "PC Setup"
+    },
+    {
+      "date": "2025-06-02 10:16:21",
+      "type": "deposit",
+      "amount": 1026.55,
+      "allocations": {
+        "Car Repairs": 51.3275,
+        "Vacation": 102.655,
+        "House Down Payment": 102.655,
+        "Emergency Savings": 205.31,
+        "UIUC": 307.965,
+        "Medical": 25.66375,
+        "Golf": 102.655,
+        "PC Setup": 102.655,
+        "Gifts": 25.66375
+      }
+    },
+    {
+      "date": "2025-06-02 10:22:54",
+      "type": "bucket_withdrawal",
+      "amount": 200.0,
+      "bucket": "Vacation"
+    },
+    {
+      "date": "2025-06-02 10:23:07",
+      "type": "deposit",
+      "amount": 200.0,
+      "allocations": {
+        "Car Repairs": 10.0,
+        "Vacation": 20.0,
+        "House Down Payment": 20.0,
+        "Emergency Savings": 40.0,
+        "UIUC": 60.0,
+        "Medical": 5.0,
+        "Golf": 20.0,
+        "PC Setup": 20.0,
+        "Gifts": 5.0
+      }
+    },
+    {
+      "date": "2025-06-13 07:11:39",
+      "type": "deposit",
+      "amount": 2500.0,
+      "allocations": {
+        "Car Repairs": 125.0,
+        "Vacation": 62.5,
+        "House Down Payment": 62.5,
+        "Emergency Savings": 500.0,
+        "UIUC": 1500.0,
+        "Medical": 62.5,
+        "Golf": 62.5,
+        "PC Setup": 62.5,
+        "Gifts": 62.5
+      }
+    },
+    {
+      "date": "2025-06-29 17:48:45",
+      "type": "withdrawal",
+      "amount": 5.0,
+      "impact": {
+        "Car Repairs": 0.4692715411238705,
+        "Vacation": 0.3968895877554206,
+        "House Down Payment": 0.166338901912805,
+        "Emergency Savings": 2.172002594747279,
+        "UIUC": 1.2371545640044506,
+        "Medical": 0.10084924600421237,
+        "Golf": 0.29335629739416763,
+        "PC Setup": 0.07601542068161389,
+        "Gifts": 0.08812184637618091
+      }
+    },
+    {
+      "date": "2025-06-29 17:49:00",
+      "type": "deposit",
+      "amount": 2000.0,
+      "allocations": {
+        "Car Repairs": 100.0,
+        "Vacation": 50.0,
+        "House Down Payment": 50.0,
+        "Emergency Savings": 400.0,
+        "UIUC": 1200.0,
+        "Medical": 50.0,
+        "Golf": 50.0,
+        "PC Setup": 50.0,
+        "Gifts": 50.0
+      }
+    },
+    {
+      "date": "2025-06-29 17:51:03",
+      "type": "reallocation",
+      "amount": 1288.15,
+      "from_bucket": "Emergency Savings",
+      "to_bucket": "UIUC"
+    },
+    {
+      "date": "2025-07-02 16:53:38",
+      "type": "deposit",
+      "amount": 36.53,
+      "allocations": {
+        "Car Repairs": 1.8265000000000002,
+        "Vacation": 0.9132500000000001,
+        "House Down Payment": 0.9132500000000001,
+        "Emergency Savings": 7.306000000000001,
+        "UIUC": 21.918,
+        "Medical": 0.9132500000000001,
+        "Golf": 0.9132500000000001,
+        "PC Setup": 0.9132500000000001,
+        "Gifts": 0.9132500000000001
+      }
+    },
+    {
+      "date": "2025-07-07 14:49:35",
+      "type": "deposit",
+      "amount": 20.0,
+      "allocations": {
+        "Car Repairs": 1.0,
+        "Vacation": 0.5,
+        "House Down Payment": 0.5,
+        "Emergency Savings": 4.0,
+        "UIUC": 12.0,
+        "Medical": 0.5,
+        "Golf": 0.5,
+        "PC Setup": 0.5,
+        "Gifts": 0.5
+      }
+    },
+    {
+      "date": "2025-07-11 14:34:16",
+      "type": "withdrawal",
+      "amount": 613.24,
+      "impact": {
+        "Car Repairs": 53.66858328543829,
+        "Vacation": 43.858415883873704,
+        "House Down Payment": 19.668393192526693,
+        "Emergency Savings": 190.10505493112404,
+        "UIUC": 238.49406187887612,
+        "Medical": 12.797035353414438,
+        "Golf": 32.995413529336375,
+        "PC Setup": 10.191400953017594,
+        "Gifts": 11.461640992392704
+      }
+    },
+    {
+      "date": "2025-07-15 07:52:55",
+      "type": "deposit",
+      "amount": 1500.0,
+      "allocations": {
+        "Car Repairs": 75.0,
+        "Vacation": 150.0,
+        "House Down Payment": 375.0,
+        "Emergency Savings": 525.0,
+        "UIUC": 112.5,
+        "Medical": 37.5,
+        "Golf": 37.5,
+        "PC Setup": 150.0,
+        "Gifts": 37.5
+      }
+    }
+  ]
+}
