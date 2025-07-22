@@ -172,28 +172,34 @@ const Dashboard: React.FC<DashboardProps> = ({ data, historicalData, isLoading, 
                           ${bucket.balance.toLocaleString()}
                         </Typography>
                         
-                        <Box sx={{ mb: 1 }}>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                            <Typography variant="body2" color="text.secondary">
-                              Progress
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {((bucket.balance / (data.totalBalance || 1)) * 100).toFixed(1)}%
+                        {bucket.goal && (
+                          <Box sx={{ mb: 1 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                              <Typography variant="body2" color="text.secondary">
+                                Goal Progress
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                ${bucket.goal.toLocaleString()}
+                              </Typography>
+                            </Box>
+                            <LinearProgress
+                              variant="determinate"
+                              value={Math.min((bucket.balance / bucket.goal) * 100, 100)}
+                              sx={{
+                                height: 8,
+                                borderRadius: 4,
+                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                '& .MuiLinearProgress-bar': {
+                                  backgroundColor: bucket.color,
+                                  borderRadius: 4,
+                                },
+                              }}
+                            />
+                            <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
+                              {Math.round((bucket.balance / bucket.goal) * 100)}% complete
                             </Typography>
                           </Box>
-                          <LinearProgress 
-                            variant="determinate" 
-                            value={Math.min((bucket.balance / (data.totalBalance || 1)) * 100, 100)}
-                            sx={{ 
-                              height: 6, 
-                              borderRadius: 3,
-                              backgroundColor: '#f0f0f0',
-                              '& .MuiLinearProgress-bar': {
-                                backgroundColor: bucket.color,
-                              }
-                            }}
-                          />
-                        </Box>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
