@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '../utils/currency';
 import {
   Dialog,
   DialogTitle,
@@ -152,7 +153,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
               >
                 {data.buckets.map((bucket) => (
                   <MenuItem key={bucket.id} value={bucket.name}>
-                    {bucket.name} - ${bucket.balance.toLocaleString()}
+                    {bucket.name} - ${formatCurrency(bucket.balance)}
                   </MenuItem>
                 ))}
               </Select>
@@ -166,25 +167,47 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
               >
-                <Box sx={{ mt: 3, p: 2, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
+                <Box sx={{ 
+                  mt: 3, 
+                  p: 2, 
+                  backgroundColor: '#f5f5f5', 
+                  borderRadius: 2,
+                  '@media (prefers-color-scheme: dark)': {
+                    backgroundColor: '#424242',
+                  }
+                }}>
                   <Typography variant="h6" gutterBottom>
                     Preview
                   </Typography>
-                  {type === 'deposit' && (
+                   {type === 'deposit' && (
                     <Box>
-                      {data.buckets.map((bucket) => {
+                      {(() => {
                         const totalAllocation = data.buckets.reduce((sum, b) => sum + b.allocation, 0);
-                        const scaledAllocation = (bucket.allocation / totalAllocation) * 100;
-                        const allocationAmount = parseFloat(amount) * (scaledAllocation / 100);
-                        return (
+                        const allocations: Record<string, number> = {};
+                        let totalAllocated = 0;
+                        
+                        data.buckets.forEach((bucket) => {
+                          const scaledAllocation = (bucket.allocation / totalAllocation) * 100;
+                          const allocationAmount = Math.floor(parseFloat(amount) * (scaledAllocation / 100) * 100) / 100;
+                          allocations[bucket.name] = allocationAmount;
+                          totalAllocated += allocationAmount;
+                        });
+                        
+                        // Add remainder to first bucket
+                        const remainder = Math.round((parseFloat(amount) - totalAllocated) * 100) / 100;
+                        if (data.buckets.length > 0) {
+                          allocations[data.buckets[0].name] = Math.round((allocations[data.buckets[0].name] + remainder) * 100) / 100;
+                        }
+                        
+                        return data.buckets.map((bucket) => (
                           <Box key={bucket.id} sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                             <Typography variant="body2">{bucket.name}</Typography>
                             <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                              +${allocationAmount.toFixed(2)}
+                              +${allocations[bucket.name].toFixed(2)}
                             </Typography>
                           </Box>
-                        );
-                      })}
+                        ));
+                      })()}
                     </Box>
                   )}
                   {type === 'withdraw' && transactionType === 'general' && (
@@ -204,7 +227,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
 
           {type === 'withdraw' && transactionType === 'general' && parseFloat(amount) > data.totalBalance && (
             <Alert severity="error" sx={{ mt: 2 }}>
-              Insufficient funds. Available: ${data.totalBalance.toLocaleString()}
+              Insufficient funds. Available: ${formatCurrency(data.totalBalance)}
             </Alert>
           )}
           {type === 'withdraw' && transactionType === 'specific' && selectedBucket && parseFloat(amount) > 0 && (
@@ -212,7 +235,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
               const bucket = data.buckets.find(b => b.name === selectedBucket);
               return bucket && parseFloat(amount) > bucket.balance ? (
                 <Alert severity="error" sx={{ mt: 2 }}>
-                  Insufficient funds in {selectedBucket}. Available: ${bucket.balance.toLocaleString()}
+                  Insufficient funds in {selectedBucket}. Available: ${formatCurrency(bucket.balance)}
                 </Alert>
               ) : null;
             })()

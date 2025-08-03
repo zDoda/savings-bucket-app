@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '../utils/currency';
 import {
   Box,
   Card,
@@ -128,7 +129,7 @@ const BucketManager: React.FC<BucketManagerProps> = ({
                     </Box>
 
                     <Typography variant="h4" sx={{ fontWeight: 'bold', color: 'primary.main', mb: 2 }}>
-                      ${bucket.balance.toLocaleString()}
+                      ${formatCurrency(bucket.balance)}
                     </Typography>
 
                     {bucket.goal && (
@@ -138,7 +139,7 @@ const BucketManager: React.FC<BucketManagerProps> = ({
                             Goal Progress
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
-                            ${bucket.goal.toLocaleString()}
+                            ${formatCurrency(bucket.goal)}
                           </Typography>
                         </Box>
                         <LinearProgress
@@ -219,7 +220,7 @@ const BucketManager: React.FC<BucketManagerProps> = ({
               value={formData.goal}
               onChange={(e) => setFormData({ ...formData, goal: Number(e.target.value) })}
               inputProps={{ min: 0 }}
-              helperText={`Auto-calculated: $${(100000 * (formData.allocation / 100)).toLocaleString()}`}
+              helperText={`Auto-calculated: $${formatCurrency(100000 * (formData.allocation / 100))}`}
             />
           </Box>
         </DialogContent>

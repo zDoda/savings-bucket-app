@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { formatCurrency } from '../utils/currency';
 import {
   Dialog,
   DialogTitle,
@@ -129,7 +130,7 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
             >
               {data.buckets.map((bucket) => (
                 <MenuItem key={bucket.id} value={bucket.name}>
-                  {bucket.name} (${bucket.balance.toLocaleString()})
+                  {bucket.name} (${formatCurrency(bucket.balance)})
                 </MenuItem>
               ))}
             </Select>
@@ -146,7 +147,7 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
                 .filter(bucket => bucket.name !== fromBucket)
                 .map((bucket) => (
                   <MenuItem key={bucket.id} value={bucket.name}>
-                    {bucket.name} (${bucket.balance.toLocaleString()})
+                    {bucket.name} (${formatCurrency(bucket.balance)})
                   </MenuItem>
                 ))}
             </Select>
@@ -161,7 +162,7 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
             InputProps={{
               startAdornment: '$',
             }}
-            helperText={`Available: $${getBucketBalance(fromBucket).toLocaleString()}`}
+            helperText={`Available: $${formatCurrency(getBucketBalance(fromBucket))}`}
           />
 
           <AnimatePresence>
@@ -171,7 +172,13 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
               >
-                <Card sx={{ mt: 2, backgroundColor: 'grey.50' }}>
+                <Card sx={{ 
+                  mt: 2, 
+                  backgroundColor: 'grey.50',
+                  '@media (prefers-color-scheme: dark)': {
+                    backgroundColor: '#424242',
+                  }
+                }}>
                   <CardContent>
                     <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                       Preview
@@ -181,7 +188,7 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
                         {fromBucket} new balance:
                       </Typography>
                       <Typography variant="body2" sx={{ fontWeight: 'bold', color: 'error.main' }}>
-                        ${preview.fromBalance.toLocaleString()}
+                        ${formatCurrency(preview.fromBalance)}
                       </Typography>
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -189,7 +196,7 @@ const ReallocationModal: React.FC<ReallocationModalProps> = ({
                         {toBucket} new balance:
                       </Typography>
                       <Typography variant="body2" sx={{ fontWeight: 'bold', color: 'success.main' }}>
-                        ${preview.toBalance.toLocaleString()}
+                        ${formatCurrency(preview.toBalance)}
                       </Typography>
                     </Box>
                   </CardContent>

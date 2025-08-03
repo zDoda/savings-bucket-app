@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '../utils/currency';
 import {
   Box,
   Card,
@@ -91,7 +92,7 @@ const HistoricalCharts: React.FC<HistoricalChartsProps> = ({ data, historicalDat
             })}
           </Typography>
           <Typography variant="body2" color="primary.main">
-            Balance: ${payload[0].value.toLocaleString()}
+            Balance: ${formatCurrency(payload[0].value)}
           </Typography>
         </Box>
       );
@@ -176,7 +177,7 @@ const HistoricalCharts: React.FC<HistoricalChartsProps> = ({ data, historicalDat
                     <YAxis 
                       stroke="currentColor"
                       fontSize={12}
-                      tickFormatter={(value) => `$${value.toLocaleString()}`}
+                      tickFormatter={(value) => `$${formatCurrency(value)}`}
                     />
                     <Tooltip content={<CustomTooltip />} />
                     <Line
@@ -196,12 +197,12 @@ const HistoricalCharts: React.FC<HistoricalChartsProps> = ({ data, historicalDat
                 {chartType === 'total' ? (
                   <>
                     <Chip
-                      label={`Current: $${data.totalBalance.toLocaleString()}`}
+                      label={`Current: $${formatCurrency(data.totalBalance)}`}
                       color="primary"
                       variant="outlined"
                     />
                     <Chip
-                      label={`Peak: $${Math.max(...totalBalanceData.map(d => d.balance)).toLocaleString()}`}
+                      label={`Peak: $${formatCurrency(Math.max(...totalBalanceData.map(d => d.balance)))}`}
                       color="success"
                       variant="outlined"
                     />
@@ -214,7 +215,7 @@ const HistoricalCharts: React.FC<HistoricalChartsProps> = ({ data, historicalDat
                 ) : (
                   <>
                     <Chip
-                      label={`Current: $${(data.buckets.find(b => b.name === selectedBucket)?.balance || 0).toLocaleString()}`}
+                      label={`Current: $${formatCurrency(data.buckets.find(b => b.name === selectedBucket)?.balance || 0)}`}
                       sx={{ 
                         backgroundColor: data.buckets.find(b => b.name === selectedBucket)?.color + '20',
                         color: data.buckets.find(b => b.name === selectedBucket)?.color,
@@ -223,7 +224,7 @@ const HistoricalCharts: React.FC<HistoricalChartsProps> = ({ data, historicalDat
                       variant="outlined"
                     />
                     <Chip
-                      label={`Peak: $${Math.max(...bucketHistoryData.map(d => d.balance)).toLocaleString()}`}
+                      label={`Peak: $${formatCurrency(Math.max(...bucketHistoryData.map(d => d.balance)))}`}
                       color="success"
                       variant="outlined"
                     />

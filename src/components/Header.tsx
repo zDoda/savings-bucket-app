@@ -126,6 +126,20 @@ const Header: React.FC<HeaderProps> = ({
           >
             Withdraw
           </Button>
+          <Button
+            variant="contained"
+            startIcon={<SwapIcon />}
+            onClick={onReallocate}
+            sx={{
+              backgroundColor: 'rgba(255,255,255,0.2)',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: 'rgba(255,255,255,0.3)',
+              },
+            }}
+          >
+            Reallocate
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

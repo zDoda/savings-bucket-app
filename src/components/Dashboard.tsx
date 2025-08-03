@@ -14,6 +14,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { motion } from 'framer-motion';
 import { SavingsData } from '../types';
 import { HistoricalDataPoint } from '../utils/historicalDataProcessor';
+import { formatCurrency } from '../utils/currency';
 import HistoricalCharts from './HistoricalCharts';
 
 interface DashboardProps {
@@ -79,7 +80,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, historicalData, isLoading, 
                     Total Balance
                   </Typography>
                   <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 1 }}>
-                    ${data.totalBalance.toLocaleString()}
+                    ${formatCurrency(data.totalBalance)}
                   </Typography>
                   <Chip 
                     label={`${data.buckets.length} Buckets`} 
@@ -122,7 +123,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, historicalData, isLoading, 
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
+                      <Tooltip formatter={(value: number) => `$${formatCurrency(value)}`} />
                     </PieChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -169,7 +170,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, historicalData, isLoading, 
                         </Box>
                         
                         <Typography variant="h4" sx={{ fontWeight: 'bold', color: 'primary.main', mb: 2 }}>
-                          ${bucket.balance.toLocaleString()}
+                          ${formatCurrency(bucket.balance)}
                         </Typography>
                         
                         {bucket.goal && (
@@ -179,7 +180,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, historicalData, isLoading, 
                                 Goal Progress
                               </Typography>
                               <Typography variant="body2" color="text.secondary">
-                                ${bucket.goal.toLocaleString()}
+                                ${formatCurrency(bucket.goal)}
                               </Typography>
                             </Box>
                             <LinearProgress

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SavingsData, Bucket, Transaction } from '../types';
 import { processHistoricalData, HistoricalDataPoint } from '../utils/historicalDataProcessor';
+import { roundToCents, addCurrency, subtractCurrency } from '../utils/currency';
 
 const STORAGE_KEY = 'savings-bucket-data';
 
@@ -18,7 +19,7 @@ const loadHistoricalData = async (): Promise<SavingsData | null> => {
     const buckets: Bucket[] = Object.entries(historicalData.buckets).map(([name, balance], index) => ({
       id: generateId(),
       name,
-      balance: balance as number,
+      balance: roundToCents(balance as number),
       allocation: 10, // Default allocation, will be updated from config
       color: `hsl(${(index * 360) / Object.keys(historicalData.buckets).length}, 70%, 60%)`,
       goal: 100000 * 0.1 // Default goal based on 10% allocation
@@ -38,7 +39,7 @@ const loadHistoricalData = async (): Promise<SavingsData | null> => {
     }));
 
     return {
-      totalBalance: historicalData.total_balance,
+      totalBalance: roundToCents(historicalData.total_balance),
       buckets,
       transactions
     };
@@ -184,35 +185,35 @@ export const useSavingsData = () => {
       let newBuckets = [...prev.buckets];
 
       if (transaction.type === 'deposit') {
-        newTotalBalance += transaction.amount;
+        newTotalBalance = addCurrency(newTotalBalance, transaction.amount);
         if (transaction.allocations) {
           newBuckets = newBuckets.map(bucket => ({
             ...bucket,
-            balance: bucket.balance + (transaction.allocations![bucket.name] || 0),
+            balance: addCurrency(bucket.balance, transaction.allocations![bucket.name] || 0),
           }));
         }
       } else if (transaction.type === 'withdrawal') {
-        newTotalBalance -= transaction.amount;
+        newTotalBalance = subtractCurrency(newTotalBalance, transaction.amount);
         if (transaction.impact) {
           newBuckets = newBuckets.map(bucket => ({
             ...bucket,
-            balance: bucket.balance - (transaction.impact![bucket.name] || 0),
+            balance: subtractCurrency(bucket.balance, transaction.impact![bucket.name] || 0),
           }));
         }
       } else if (transaction.type === 'bucket_withdrawal' && transaction.bucket) {
-        newTotalBalance -= transaction.amount;
+        newTotalBalance = subtractCurrency(newTotalBalance, transaction.amount);
         newBuckets = newBuckets.map(bucket =>
           bucket.name === transaction.bucket
-            ? { ...bucket, balance: bucket.balance - transaction.amount }
+            ? { ...bucket, balance: subtractCurrency(bucket.balance, transaction.amount) }
             : bucket
         );
       } else if (transaction.type === 'reallocation' && transaction.fromBucket && transaction.toBucket) {
         newBuckets = newBuckets.map(bucket => {
           if (bucket.name === transaction.fromBucket) {
-            return { ...bucket, balance: bucket.balance - transaction.amount };
+            return { ...bucket, balance: subtractCurrency(bucket.balance, transaction.amount) };
           }
           if (bucket.name === transaction.toBucket) {
-            return { ...bucket, balance: bucket.balance + transaction.amount };
+            return { ...bucket, balance: addCurrency(bucket.balance, transaction.amount) };
           }
           return bucket;
         });

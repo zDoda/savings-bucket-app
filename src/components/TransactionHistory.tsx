@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatCurrency } from '../utils/currency';
 import {
   Box,
   Card,
@@ -152,7 +153,7 @@ const TransactionHistory: React.FC<TransactionHistoryProps> = ({ data, onBack })
                               }}
                             >
                               {transaction.type.includes('withdrawal') ? '-' : '+'}$
-                              {transaction.amount.toLocaleString()}
+                              {formatCurrency(transaction.amount)}
                             </Typography>
                           </TableCell>
                           <TableCell>{formatTransactionDetails(transaction)}</TableCell>
